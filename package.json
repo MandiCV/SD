@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MandiCV/SD/issues"
   },
-  "homepage": "https://github.com/MandiCV/SD#readme"
+  "homepage": "https://github.com/MandiCV/SD#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
