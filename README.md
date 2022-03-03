@@ -47,6 +47,18 @@ Además contamos con un _end-pint_ POST `app.post('/api/:coleccion')` para añad
 
 Podemos hacer una pequeña prueba en el terminal para que nos devuelva las colecciones creadas, buscando en el navegador <http://localhost:3000/api> lo cual nos devolverá un registro de nuestras colecciones, si está vacio es que no contamos con ninguna en este momento.
 
+## Ejecutando las pruebas ⚙️
+
+Para ejecutar las pruebas tendremos que importar el archivo crud.postman_collection.json en el que hay una colección exportada de Postman. Para esto en nuestro caso usaremos Postman. 
+Si no usas Postman saltar el siguiente párrafo.
+
+Para esto tendremos que tener una cuenta en Postman e instalarlo `$ sudo snap install postman`
+Posteriormente iniciamos postman e importamos el archivo crud.postman_collection.json.
+
+Una vez con la colección importada podemos ejecutar cualquier _end-point_ en este caso tendrémos aparte de los _end-point_ vistos en index.js, dos POST, uno para la colección familia y otro para la colección mascotas, pero se puede pillar cualquiera de estas colecciones como ejemplo para crear otras.
+
+Además si hemos activado Nodemon podremos ver como funciona la ejecución en el terminal.
+
 
 ## Construido con 🛠️
 
