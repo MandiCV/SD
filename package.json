@@ -19,6 +19,7 @@
   "homepage": "https://github.com/MandiCV/SD#readme",
   "dependencies": {
     "express": "^4.17.2",
+    "mongojs": "^3.1.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
