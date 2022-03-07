@@ -1,7 +1,7 @@
 # Backend CRUD API REST
 
 _Ejemplo de WS REST con NodeJS que proporciona un API CRUD para gestionar una DB MongoDB._
-Esto funciona en Ubuntu 20.04
+Esto funciona en Ubuntu 20.04 LTS
 
 ## Comenzando 🚀
 
@@ -13,9 +13,9 @@ Ver **Deployment** para conocer cómo desplegar el proyecto.
 
 _Qué cosas necesitas para instalar el software y cómo instalarlas_
 
-Para este caso necesitaremos instalar MongoDB.
+Para este caso necesitaremos instalar MongoDB y NodeJS y descargar y descomprimir en una carpeta todos los archivos del repositorio.
 
-Para esto habrá que seguir los siguientes pasos:
+Para instalar MOngoDB habrá que seguir los siguientes pasos:
 
 1. Abrimos un terminar nuevo
 
@@ -26,7 +26,22 @@ Para esto habrá que seguir los siguientes pasos:
 4. Instalamos MongoDB con `$ sudo apt install -y mongodb`
 
 	4.1  si ocurre algún error debido a que se interrumpe la ejecución dpkg, poner `$ sudo dpkg --configure --a` y volver al paso 4
-	
+
+En cuanto a la instalación de NodeJS:
+
+1.  Como en la instalación de MongoDB volvemos a actualizar con 
+	`$ sudo apt update`
+2. Instalamos el gestor de paquetes de Node (npm)
+	`$ sudo apt install npm`
+3. A continuación, instalamos con npm una utilidad que ayuda a instalar y mantener las versiones de Node
+(se denomina n)
+	`$ sudo npm clean -f`
+	`$ sudo npm i -g n`
+4. Finalmente, instalamos la última versión estable de Node JS a través de la utilidad n
+	`$ sudo n stable`
+5. Podemos comprobamos las versiones instaladas
+	`$ node --version`
+	`$ npm -v`
 ### Instalación 🔧
 
 _Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
