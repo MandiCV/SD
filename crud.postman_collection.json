@@ -153,12 +153,22 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "/api/mascotas/6220061858c97a1091a03385",
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:3000/api/mascotas/6220061858c97a1091a03385",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"mascotas",
+						"6220061858c97a1091a03385"
+					]
 				}
 			},
 			"response": []
