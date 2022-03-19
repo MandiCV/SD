@@ -6,13 +6,19 @@
 	},
 	"item": [
 		{
-			"name": "/api/mascotas",
+			"name": "/api/{coleccion}",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "password1234",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"tipo\": \"Gato\",\n    \"nombre\": \"Angela\",\n    \"raza\": \"Común\"    \n}",
+					"raw": "{\n    \"tipo\": \"Conejo\",\n    \"nombre\": \"Manchitas\",\n    \"raza\": \"Conejo mascota\"    \n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -35,13 +41,19 @@
 			"response": []
 		},
 		{
-			"name": "/api/familia",
+			"name": "/api/{coleccion}/{id}",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "password1234",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"tipo\": \"Hermano\",\n    \"nombre\": \"Pepe\",\n    \"edad\": 46\n}",
+					"raw": "{\n    \"tipo\": \"Hermana\",\n    \"nombre\": \"Susana\",\n    \"edad\": 12\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -83,27 +95,7 @@
 			"response": []
 		},
 		{
-			"name": "/api/familia",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/api/familia",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"familia"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/api/mascotas",
+			"name": "/api/{coleccion}",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -123,10 +115,37 @@
 			"response": []
 		},
 		{
-			"name": "/api/mascotas/6220061858c97a1091a03385",
+			"name": "/api/{coleccion}/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/mascotas/62208fa2684ede0e4d07a729",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"mascotas",
+						"62208fa2684ede0e4d07a729"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/{coleccion}/{id}",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "password1234",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"color\": \"negro\"\n}",
@@ -153,10 +172,16 @@
 			"response": []
 		},
 		{
-			"name": "/api/mascotas/6220061858c97a1091a03385",
+			"name": "/api/{coleccion}/{id}",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "password1234",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:3000/api/mascotas/6220061858c97a1091a03385",
 					"protocol": "http",

@@ -128,7 +128,7 @@ app.delete('/api/:coleccion/:id', auth, (req, res, next) => {
 //iniciamos la app
 
 https.createServer(OPTIONS_HTTPS, app).listen(port, () => {
-    console.log(`SEC WS API REST CRUD con DBejecutándose en https://localhost:${port}/api/:coleccion/:id`);
+    console.log(`SEC WS API REST CRUD con DB ejecutándose en https://localhost:${port}/api/:coleccion/:id`);
     
 });
 /*
