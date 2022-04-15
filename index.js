@@ -35,7 +35,7 @@ var allowCrossTokenOrigin = (req, res, next) => {
     res.header("Access-Control-Allow-Origin","*");
     return next();
 };
-
+/*
 var auth = (req, res, next) => {
     if(req.headers.token =="password1234") {
         return next();
@@ -43,7 +43,7 @@ var auth = (req, res, next) => {
         return next(new Error("No autotizado"));
     };
 };
-
+*/
 app.use(logger('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
@@ -90,23 +90,24 @@ app.get('/api/:coleccion/:id', (req, res, next) =>{
     });
 });
 
-app.post('/api/:coleccion', auth, (req, res, next) =>{
+app.post('/api/:coleccion'/*, auth*/, (req, res, next) =>{
     const elemento = req.body;
 
-    if(!elemento.nombre) {
+ /*   if(!elemento.nombre) {
         res.status(400).json ({
             error: 'Bad Data',
             description: 'Se precisa al menos un campo <nombre>'
         });
-    } else {
+       
+    } else { */
         req.collection.save(elemento, (err, coleccionGuardada) => {
             if (err) return next(err);
             res.json(coleccionGuardada);
         });
-    }
+    //}
 });
 
-app.put('/api/:coleccion/:id', auth, (req, res, next) => {
+app.put('/api/:coleccion/:id'/*, auth*/, (req, res, next) => {
     let elementoId = req.params.id;
     let elementoNuevo = req.body;
     req.collection.update({_id: id(elementoId)},
@@ -116,7 +117,7 @@ app.put('/api/:coleccion/:id', auth, (req, res, next) => {
         });
 });
 
-app.delete('/api/:coleccion/:id', auth, (req, res, next) => {
+app.delete('/api/:coleccion/:id'/*, auth*/, (req, res, next) => {
     let elementoId = req.params.id;
 
     req.collection.remove({_id: id(elementoId)}, (err, resultado) =>{
