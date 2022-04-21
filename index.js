@@ -13,7 +13,7 @@ const OPTIONS_HTTPS ={
 const express = require('express');
 const logger = require('morgan');
 const mongojs = require('mongojs');
-
+const TokenService = require('./services/token.service');
 
 const app = express();
 
@@ -35,15 +35,20 @@ var allowCrossTokenOrigin = (req, res, next) => {
     res.header("Access-Control-Allow-Origin","*");
     return next();
 };
-/*
+
 var auth = (req, res, next) => {
-    if(req.headers.token =="password1234") {
+    const jwt=req.headers.authorization.split(' ')[1]; //No pilla el token
+    TokenService.decodificaToken(jwt)
+    .then(userId => {
+        req.user = { 
+            id: userId
+         }
         return next();
-    } else{
-        return next(new Error("No autotizado"));
-    };
+    })
+    .catch( err => res.json({res: 'ko', error: err}));
 };
-*/
+
+
 app.use(logger('dev'));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
@@ -90,7 +95,7 @@ app.get('/api/:coleccion/:id', (req, res, next) =>{
     });
 });
 
-app.post('/api/:coleccion'/*, auth*/, (req, res, next) =>{
+app.post('/api/:coleccion', auth, (req, res, next) =>{
     const elemento = req.body;
 
  /*   if(!elemento.nombre) {
@@ -102,12 +107,15 @@ app.post('/api/:coleccion'/*, auth*/, (req, res, next) =>{
     } else { */
         req.collection.save(elemento, (err, coleccionGuardada) => {
             if (err) return next(err);
-            res.json(coleccionGuardada);
+            res.json({
+                result: 'OK',
+                elemento: coleccionGuardada
+            })
         });
     //}
 });
 
-app.put('/api/:coleccion/:id'/*, auth*/, (req, res, next) => {
+app.put('/api/:coleccion/:id', auth, (req, res, next) => {
     let elementoId = req.params.id;
     let elementoNuevo = req.body;
     req.collection.update({_id: id(elementoId)},
@@ -117,7 +125,7 @@ app.put('/api/:coleccion/:id'/*, auth*/, (req, res, next) => {
         });
 });
 
-app.delete('/api/:coleccion/:id'/*, auth*/, (req, res, next) => {
+app.delete('/api/:coleccion/:id', auth, (req, res, next) => {
     let elementoId = req.params.id;
 
     req.collection.remove({_id: id(elementoId)}, (err, resultado) =>{

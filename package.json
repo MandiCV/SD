@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/MandiCV/SD#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.2",
+    "jwt-simple": "^0.5.6",
+    "moment": "^2.29.3",
     "mongojs": "^3.1.0",
     "morgan": "^1.10.0"
   },
