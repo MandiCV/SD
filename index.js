@@ -68,7 +68,7 @@ app.param("coleccion", (req, res, next, coleccion) =>{
 
 //rutas
 
-app.get('/api', (req, res, next) =>{
+app.get('/api', auth,(req, res, next) =>{
     console.log('GET /api');
     console.log(req.params);
     console.log(req.collection);
@@ -79,7 +79,7 @@ app.get('/api', (req, res, next) =>{
     });
 });
 
-app.get('/api/:coleccion', (req, res, next) =>{
+app.get('/api/:coleccion', auth,(req, res, next) =>{
 
     req.collection.find((err, coleccion) =>{
         if (err) return next(err);
@@ -87,7 +87,7 @@ app.get('/api/:coleccion', (req, res, next) =>{
     });
 });
 
-app.get('/api/:coleccion/:id', (req, res, next) =>{
+app.get('/api/:coleccion/:id', auth,(req, res, next) =>{
 
     req.collection.findOne({_id: id(req.params.id)},(err, elemento) =>{
         if (err) return next(err);
@@ -115,7 +115,7 @@ app.post('/api/:coleccion', auth, (req, res, next) =>{
     //}
 });
 
-app.put('/api/:coleccion/:id', auth, (req, res, next) => {
+app.put('/api/:coleccion/:id', auth,(req, res, next) => {
     let elementoId = req.params.id;
     let elementoNuevo = req.body;
     req.collection.update({_id: id(elementoId)},
@@ -125,7 +125,7 @@ app.put('/api/:coleccion/:id', auth, (req, res, next) => {
         });
 });
 
-app.delete('/api/:coleccion/:id', auth, (req, res, next) => {
+app.delete('/api/:coleccion/:id', auth,(req, res, next) => {
     let elementoId = req.params.id;
 
     req.collection.remove({_id: id(elementoId)}, (err, resultado) =>{
